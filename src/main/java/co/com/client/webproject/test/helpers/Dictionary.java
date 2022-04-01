@@ -2,6 +2,8 @@ package co.com.client.webproject.test.helpers;
 
 public class Dictionary {
     public static final String STATE_BY_DEFAULT_FLORIDA = "Florida";
+    public static final String SUBJECT = "Customer service";
+    public static final String MENSAJE_ENVIADO_EXITOSO = "Your message has been successfully sent to our team.";
     public static final String MENSAJE_EXITOSO_BANKWIRE = "You have chosen to pay by bank wire. Here is a short summary of your order:";
     public static final String MENSAJE_EXITOSO_CHEQUE = "You have chosen to pay by check. Here is a short summary of your order:";
     public static final String EMPTY_STRING = "";

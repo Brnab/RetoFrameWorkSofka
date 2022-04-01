@@ -1,6 +1,7 @@
 package co.com.client.webproject.test.helpers;
 
 
+import co.com.client.webproject.test.model.ContactUs;
 import co.com.client.webproject.test.model.Customer;
 import co.com.sofka.test.evidence.reports.Report;
 
@@ -74,4 +75,25 @@ public class Helper {
 
         return customer;
     }
+
+    public static ContactUs generateContactUs(String emailDomain, String language, String country){
+
+        Faker faker =  Faker.instance(
+                new Locale(language, country),
+                new Random()
+        );
+
+        ContactUs contactUs = new ContactUs();
+        contactUs.setEmail(faker.name().username().concat(emailDomain).replace(SPACE_STRING,EMPTY_STRING));
+        contactUs.setSubject(SUBJECT);
+        contactUs.setOrderReference(faker.phoneNumber().cellPhone());
+        contactUs.setMessage(faker.commerce().department());
+
+        return contactUs;
+
+
+    }
+
+
+
 }
