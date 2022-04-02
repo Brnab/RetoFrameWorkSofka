@@ -62,6 +62,38 @@ public class contactarseStepDefinition extends Setup {
     }
 
 
+    @Dado("que ya me encuentro en la pagina web")
+    public void que_ya_me_encuentro_en_la_pagina_web() {
+
+        StartBrowserWebController startBrowserWebController = new StartBrowserWebController();
+        startBrowserWebController.setWebAction(webAction);
+        startBrowserWebController.setBrowser(browser());
+        startBrowserWebController.setFeatue(testInfo.getFeatureName());
+        startBrowserWebController.abrirTiendaOnline();
+
+    }
+    @Cuando("Lleno la informacion solicitada menos adjuntar archivo ni colocar numero de referencia")
+    public void lleno_la_informacion_solicitada_menos_adjuntar_archivo_ni_colocar_numero_de_referencia() {
+
+        NavegarAContactUs navegarAContactUs = new NavegarAContactUs();
+        navegarAContactUs.setWebAction(webAction);
+        navegarAContactUs.irHaciaContactUs();
+
+
+        ContactUsPageController contactUsPageController  = new ContactUsPageController();
+        contactUsPageController.setWebAction(webAction);
+        contactUsPageController.llenarInfoSin();
+        Mensaje=contactUsPageController.Texto;
+
+    }
+    @Entonces("el sistema deberia mostrar que el mensaje fue enviado")
+    public void el_sistema_deberia_mostrar_que_el_mensaje_fue_enviado() {
+
+        Assert.Hard.thatString(Mensaje).isEqualTo(MENSAJE_ENVIADO_EXITOSO);
+
+    }
+
+
     @After
     public void cerrarDriver() throws InterruptedException {
 

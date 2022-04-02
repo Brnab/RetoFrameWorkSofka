@@ -46,4 +46,30 @@ public class ContactUsPageController {
 
 
 
+    public void llenarInfoSin(){
+
+        try {
+
+            contactUs = generateContactUs(EMAIL_DOMAIN,SPANISH_CODE_LANGUAGE, COUNTRY_CODE);
+            ContactUsPage contactUsPage = new ContactUsPage(webAction.getDriver());
+
+
+
+            webAction.selectByText(contactUsPage.getSelectForm(),contactUs.getSubject(),3,true);
+            webAction.sendText(contactUsPage.getEmail(),contactUs.getEmail(),3,true);
+            webAction.sendText(contactUsPage.getMessage(),contactUs.getMessage(),3,true);
+            webAction.click(contactUsPage.getSend(),3,true);
+            Texto = webAction.getText(contactUsPage.getText(),3,true);
+
+        }catch (WebActionsException e) {
+            Report.reportFailure("Ocurrio un error al llenar la informacion.", e);
+        }
+
+
+
+
+    }
+
+
+
 }
